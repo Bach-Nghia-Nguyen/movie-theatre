@@ -2,24 +2,31 @@ import React from "react";
 import { Navbar, Nav, NavbarBrand } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import movieLogo from "../images/movie-app-logo.png";
+import movieLogo from "../images/paradise-theatre.png";
 
 const NavigationBar = () => {
   return (
-    <Navbar className="navigation" expand="lg">
+    <Navbar sticky="top" collapseOnSelect className="navigation" expand="lg">
       <NavbarBrand className="mr-auto">
         <img src={movieLogo} alt="Movie Logo" width="125px" />
       </NavbarBrand>
 
-      <Nav className="ml-auto">
-        <Link className="link" to="/">
-          Home
-        </Link>
+      <Navbar.Toggle
+        aria-controls="responsive-navbar-nav"
+        className="nav-toggle"
+      />
 
-        <Link className="link" to="/watchlist">
-          My Watchlist
-        </Link>
-      </Nav>
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="ml-auto">
+          <Link className="link" to="/">
+            Home
+          </Link>
+
+          <Link className="link" to="/watchlist">
+            My Watchlist
+          </Link>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 };

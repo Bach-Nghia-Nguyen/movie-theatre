@@ -1,15 +1,27 @@
 /*------------------------
   Import fonts 
 ------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
 /*------------------------
   Global style
 ------------------------*/
+/* define custome css variables */
+:root {
+  --bg-blue-900: #0013b4;
+  --bg-blue-500: #112647;
+  --bg-blue-100: #090c29;
+  --bg-blue-50: #0c1340;
+
+  --text-light-blue-900: #8993e9;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   outline: none;
+  font-family: "Poppins", sans-serif;
 }
 
 ::before,
@@ -18,8 +30,214 @@
 }
 
 /*------------------------
+  Utilities style
+------------------------*/
+.no-bullet {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*------------------------
+  navigation bar style
+------------------------*/
+.navigation {
+  background-color: var(--bg-blue-50);
+}
+
+.navigation .link {
+  color: var(--text-light-blue-900);
+  margin-right: 35px;
+}
+
+.nav-toggle {
+  background-color: var(--text-light-blue-900);
+}
+
+@media screen and (max-width: 991px) {
+  .navigation .link {
+    color: var(--text-light-blue-900);
+    margin: 10px auto;
+  }
+}
+
+/*------------------------
+  movie outline card style
+------------------------*/
+.movie-outline-card {
+  width: 12rem;
+}
+
+/*------------------------
   Not found page style
 ------------------------*/
 .not-found {
   height: 80vh;
+}
+
+/*------------------------
+  footer style
+------------------------*/
+footer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 50px 100px;
+  background: #111;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+footer .footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+footer .footer-container .sec {
+  margin-right: 30px;
+}
+
+footer .footer-container .sec.about-us {
+  width: 40%;
+}
+
+footer .footer-container h2 {
+  position: relative;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+footer .footer-container h2::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: #f00;
+}
+
+footer p {
+  color: #999;
+}
+
+.sci {
+  margin-top: 20px;
+  display: flex;
+}
+
+.sci li {
+  list-style: none;
+}
+
+.sci li a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.sci li a:hover {
+  background: #f00;
+}
+
+.sci li a .social-icons {
+  color: #fff;
+  font-size: 20px;
+}
+
+.quick-links {
+  position: relative;
+  width: 25%;
+}
+
+.quick-links ul li {
+  list-style: none;
+}
+
+.quick-links ul li a {
+  color: #999;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.quick-links ul li a:hover {
+  color: #fff;
+}
+
+.contact {
+  width: calc(35% - 60px);
+  margin-right: 0 !important;
+}
+
+.contact .info {
+  position: relative;
+}
+
+.contact .info li {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.contact .info li span:nth-child(1) {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.contact .info li span {
+  color: #999;
+}
+
+.contact .info li a {
+  color: #999;
+  text-decoration: none;
+}
+
+.contact .info li a:hover {
+  color: #fff;
+}
+
+.copyright-text {
+  width: 100%;
+  background: #181818;
+  padding: 8px 100px;
+  text-align: center;
+  color: #999;
+}
+
+@media screen and (max-width: 991px) {
+  footer {
+    padding: 40px;
+  }
+
+  footer .footer-container {
+    flex-direction: column;
+  }
+
+  footer .footer-container .sec {
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+
+  footer .footer-container .sec.about-us,
+  .quick-links,
+  .contact {
+    width: 100%;
+  }
+
+  .copyright-text {
+    padding: 8px 40px;
+  }
 }

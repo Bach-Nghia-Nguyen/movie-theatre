@@ -1,6 +1,6 @@
 import React from "react";
 
-const MovieDetailCard = ({ title, poster, release_year }) => {
+const MovieDetailCard = ({ singleMovie, baseURL, handleGoBack, loading }) => {
   return (
     <div>
       <h1>Movie Detail</h1>

@@ -6,7 +6,7 @@ const api = axios.create({
     "Content-Type": "application/json",
   },
   params: {
-    apiKey: process.env.REACT_APP_MOVIEDB_API_KEY,
+    api_key: process.env.REACT_APP_MOVIEDB_API_KEY,
   },
 });
 
