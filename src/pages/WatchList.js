@@ -2,7 +2,7 @@ import React from "react";
 
 const WatchList = () => {
   return (
-    <div>
+    <div style={{ height: "100vh" }}>
       <h1>List of movies & films I'm about to watch</h1>
     </div>
   );

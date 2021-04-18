@@ -3,7 +3,7 @@ import React from "react";
 import movieLogo from "../images/paradise-theatre.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFacebook,
+  // faFacebook,
   faGithub,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
@@ -19,27 +19,38 @@ const Footer = () => {
       <footer>
         <div className="footer-container">
           <div className="sec about-us">
-            <h2>About us</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
+            <img
+              src={movieLogo}
+              alt="Movie Logo"
+              width="150px"
+              className="footer-logo"
+            />
 
             <ul className="sci">
-              <li>
-                <a href="#f">
+              {/* <li>
+                <a
+                  href="https://www.facebook.com/bachnghia.nguyen"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <FontAwesomeIcon className="social-icons" icon={faFacebook} />
                 </a>
-              </li>
+              </li> */}
               <li>
-                <a href="#f">
+                <a
+                  href="https://www.linkedin.com/in/bach-nghia-nguyen-7b39641a3/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <FontAwesomeIcon className="social-icons" icon={faLinkedin} />
                 </a>
               </li>
               <li>
-                <a href="#f">
+                <a
+                  href="https://github.com/Bach-Nghia-Nguyen/movie-theatre"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <FontAwesomeIcon className="social-icons" icon={faGithub} />
                 </a>
               </li>

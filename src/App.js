@@ -10,6 +10,8 @@ import Footer from "./components/Footer";
 
 // import pages
 import HomePage from "./pages/HomePage";
+import ArchivePage from "./pages/ArchivePage";
+import MovieDetailPage from "./pages/MovieDetailPage";
 import WatchList from "./pages/WatchList";
 import NotFoundPage from "./pages/NotFoundPage";
 
@@ -20,6 +22,8 @@ function App() {
       <Notification />
       <Switch>
         <Route path="/watchlist" exact component={WatchList} />
+        <Route path="/movies/:id" exact component={MovieDetailPage} />
+        <Route path="/archive" exact component={ArchivePage} />
         <Route path="/" exact component={HomePage} />
         <Route component={NotFoundPage} />
       </Switch>

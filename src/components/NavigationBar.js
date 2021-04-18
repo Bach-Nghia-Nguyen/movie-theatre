@@ -22,6 +22,10 @@ const NavigationBar = () => {
             Home
           </Link>
 
+          <Link className="link" to="/archive">
+            Archive
+          </Link>
+
           <Link className="link" to="/watchlist">
             My Watchlist
           </Link>
