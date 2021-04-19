@@ -3,7 +3,8 @@ import { Card, CardImg } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-const moviePosterURL = process.env.REACT_APP_MOVIEDB_IMAGE_URL;
+import noImageAvailable from "../images/no-image-placeholder.png";
+const moviePosterURL = process.env.REACT_APP_MOVIEDB_W500_IMAGE_URL;
 
 const MovieOutlineCard = ({
   singleMovie,
@@ -15,7 +16,11 @@ const MovieOutlineCard = ({
       <CardImg
         variant="top"
         className="movie-poster"
-        src={`${moviePosterURL}${singleMovie.poster_path}`}
+        src={
+          singleMovie.poster_path
+            ? `${moviePosterURL}${singleMovie.poster_path}`
+            : noImageAvailable
+        }
       />
 
       <div className="movie-info">
@@ -24,7 +29,12 @@ const MovieOutlineCard = ({
             ? singleMovie.title.slice(0, 39) + "..."
             : singleMovie.title}
         </h4>
-        <p>Release year: {singleMovie.release_date.slice(0, 4)}</p>
+        <p>
+          Release year:{" "}
+          {singleMovie.release_date
+            ? singleMovie.release_date.slice(0, 4)
+            : "Unknown"}
+        </p>
         <p>
           Rate: {singleMovie.vote_average}{" "}
           <FontAwesomeIcon icon={faStar} className="rate-star" />

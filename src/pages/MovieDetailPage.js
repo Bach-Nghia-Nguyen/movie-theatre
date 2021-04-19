@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
+
 import api from "../apiService";
 import { toast } from "react-toastify";
 
 import MovieDetailDisplay from "../components/MovieDetailDisplay";
+import TrailerModal from "../components/TrailerModal";
 
 const MovieDetailPage = () => {
   const [singleMovie, setSingleMovie] = useState(null);
-  const [genres, setGenres] = useState([]);
+  const [video, setVideo] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
   const [loading, setLoading] = useState(false);
-  // const [addToWatchList, setAddToWatchList] = useState(false)
 
   const history = useHistory();
   const { id } = useParams();
@@ -66,40 +69,38 @@ const MovieDetailPage = () => {
     getSingleMovie();
   }, [id]);
 
-  useEffect(() => {
-    const getMovieGenres = async () => {
-      setLoading(true);
-      try {
-        let url = createURLPath({
-          endpoint: `/genre/movie/list`,
-          queries: `language=en-US`,
-        });
-        const response = await api.get(url);
-        const data = response.data;
+  const showTrailer = async () => {
+    let url = createURLPath({
+      endpoint: `/movie/${id}/videos`,
+      queries: {
+        language: "en-US",
+      },
+    });
 
-        console.log("genres data: ", data);
+    const response = await api.get(url);
+    const data = response.data;
+    setVideo(data.results[0]);
 
-        if (response.status === 200) {
-          setGenres(data);
-        } else {
-          toast.error("DATA GENRE ERROR: ", data.message);
-        }
-      } catch (error) {
-        toast.error("CATCH GENRE ERROR: ", error.message);
-      }
-      setLoading(false);
-    };
-
-    getMovieGenres();
-  }, []);
+    setShowModal(true);
+  };
 
   return (
-    <MovieDetailDisplay
-      singleMovie={singleMovie}
-      genres={genres}
-      handleGoBack={handleGoBack}
-      loading={loading}
-    />
+    <>
+      <MovieDetailDisplay
+        singleMovie={singleMovie}
+        handleGoBack={handleGoBack}
+        loading={loading}
+        showTrailer={() => showTrailer()}
+      />
+
+      <div>
+        <TrailerModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          trailerVideo={video}
+        />
+      </div>
+    </>
   );
 };
 

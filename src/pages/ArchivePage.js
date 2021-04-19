@@ -16,8 +16,7 @@ const ArchivePage = () => {
   const [searchInputValue, setSearchInputValue] = useState("");
   const [pageNum, setPageNum] = useState(1);
   const [totalPageNum, setTotalPageNum] = useState(1);
-
-  const moviePerPage = 8;
+  // const [totalNumOfMovies, setTotalNumOfMovies] = useState(1);
 
   const history = useHistory();
 
@@ -59,22 +58,33 @@ const ArchivePage = () => {
     const getMoviesData = async () => {
       setLoading(true);
       try {
-        let url = createURLPath({
-          endpoint: `/discover/movie`,
-          queries: {
-            language: "en-US",
-            sort_by: "popularity.desc",
-            include_adult: false,
-            include_video: false,
-            page: pageNum,
-          },
-        });
+        let url = keyword
+          ? createURLPath({
+              endpoint: `/search/movie`,
+              queries: {
+                query: keyword,
+                page: pageNum,
+              },
+            })
+          : createURLPath({
+              endpoint: `/discover/movie`,
+              queries: {
+                language: "en-US",
+                sort_by: "popularity.desc",
+                include_adult: false,
+                include_video: false,
+                page: pageNum,
+              },
+            });
+
         const response = await api.get(url);
         const data = response.data;
 
         console.log(data);
         if (response.status === 200) {
           setMovies(data.results);
+          setPageNum(data.page);
+          setTotalPageNum(data.total_pages);
         } else {
           toast.error(`DATA MOVIES ERROR: ${data.message}`);
         }
@@ -84,7 +94,7 @@ const ArchivePage = () => {
       setLoading(false);
     };
     getMoviesData();
-  }, [pageNum]);
+  }, [pageNum, keyword]);
 
   return (
     <Container>
@@ -124,7 +134,7 @@ const ArchivePage = () => {
                 <MovieOutlineCard
                   key={movie.id}
                   singleMovie={movie}
-                  showMovieDetail={handleShowMovieDetail}
+                  showMovieDetail={() => handleShowMovieDetail(movie.id)}
                 />
               ))}
           </ul>

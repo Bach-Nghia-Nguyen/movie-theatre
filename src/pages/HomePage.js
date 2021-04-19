@@ -94,7 +94,7 @@ const HomePage = () => {
               <MovieOutlineCard
                 key={movie.id}
                 singleMovie={movie}
-                showMovieDetail={handleShowMovieDetail}
+                showMovieDetail={() => handleShowMovieDetail(movie.id)}
               />
             ))}
         </ul>

@@ -3,7 +3,7 @@ import React from "react";
 import movieLogo from "../images/paradise-theatre.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  // faFacebook,
+  faFacebook,
   faGithub,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
@@ -27,7 +27,7 @@ const Footer = () => {
             />
 
             <ul className="sci">
-              {/* <li>
+              <li>
                 <a
                   href="https://www.facebook.com/bachnghia.nguyen"
                   target="_blank"
@@ -35,7 +35,7 @@ const Footer = () => {
                 >
                   <FontAwesomeIcon className="social-icons" icon={faFacebook} />
                 </a>
-              </li> */}
+              </li>
               <li>
                 <a
                   href="https://www.linkedin.com/in/bach-nghia-nguyen-7b39641a3/"
@@ -89,11 +89,11 @@ const Footer = () => {
                   <FontAwesomeIcon icon={faMapMarkerAlt} />
                 </span>
                 <span>
-                  647 Linda Street
+                  12 Ton Dan Street
                   <br />
-                  Phoenixville, PA 19460,
+                  District 4, Ho Chi Minh City
                   <br />
-                  USA
+                  Vietnam
                 </span>
               </li>
 
