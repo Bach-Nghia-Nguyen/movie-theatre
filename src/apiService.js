@@ -14,6 +14,7 @@ const api = axios.create({
 api.interceptors.request.use(
   function (request) {
     // Do something before request is sent
+    console.log("whats my api key", process.env.REACT_APP_MOVIEDB_API_KEY);
     console.log("Starting request: ", request);
     return request;
   },
